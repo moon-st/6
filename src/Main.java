@@ -1,7 +1,8 @@
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+
 
 public class Main {
 
@@ -9,21 +10,25 @@ public class Main {
 //        ArrayList<Phototechnique> photoCollection = new ArrayList<>(100);
         Menu menu = new Menu();
         menu.printMenu();
-        Scanner in = new Scanner(System.in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int option =0;
         while (option==0){
             try {
-
-                option = in.nextInt();
-            } catch (InputMismatchException e) {
+                option = Integer.decode(in.readLine());
+                if (option>5) {
+                    System.out.println("Введите корректный номер пункта меню");
+                    option = 0;
+                }
+            } catch (Exception e) {
                 System.out.println("Введите корректный номер пункта меню");
-                in.nextLine();
+
             }
         }
 
         switch (option) {
+            //case 0:
             case 1:
-                //menu.add
+                menu.addToCollection();
 
             case 2:
                 //menu.rewrite
@@ -31,7 +36,7 @@ public class Main {
                 // menu.dell
 
             case 4:
-                //menu.print
+                menu.PrintCollection();
         }
 
 //        photoCollection.add(new Camera("olimpus", 25.0, 3, 2));

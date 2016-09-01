@@ -1,7 +1,17 @@
-/**
- * Created by Admin on 01.09.2016.
- */
+import java.util.ArrayList;
 public class Menu {
+    ArrayList<Phototechnique> photoCollection = new ArrayList<>(100);
+    public void addToCollection(){
+        Camera cam1 = new Camera();
+        cam1.SetPhotoObject();
+        photoCollection.add(cam1);
+    }
+    public void PrintCollection(){
+        for (Phototechnique count : photoCollection){
+            count.PrintPhotoObject();
+        }
+    }
+
     public static void printMenu(){
         System.out.println("Меню:");
         System.out.println("1. Добавить элемент в коллекцию.");
