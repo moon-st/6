@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Created by Admin on 24.07.2016.
  */
-public class Camera extends Phototechnique implements iCamera{
+public class Camera extends Phototechnique implements iCamera, iPhototechnique{
     private KindOfCam type;
     private int zoom;
     public Camera(){
@@ -17,10 +17,10 @@ public class Camera extends Phototechnique implements iCamera{
         type = KindOfCam.UNKNOWN;
     }
 
-    public Camera(String m, double pr, int zoom, KindOfCam type) {
+    public Camera(String m, double pr, int zoom, int type) {
         super(m, pr);
         this.zoom = zoom;
-        this.type = type;
+        this.type = KindOfCam.values()[type];
     }
 
     public void setType(KindOfCam type) {
@@ -42,8 +42,9 @@ public class Camera extends Phototechnique implements iCamera{
         System.out.println("Введите величину цифрового зума");
         Scanner in = new Scanner(System.in);
         zoom = in.nextInt();
-        System.out.println("Установите тип камеры: 0 - цифровая, 1 - оптическая, 2 - пленочная");
-       // type.ordinal() = in.nextInt();
+        System.out.println("Установите тип камеры: 1 - цифровая, 2 - оптическая, 3 - пленочная");
+        int id = in.nextInt();
+        type = KindOfCam.values()[id];
     }
 
     @Override
