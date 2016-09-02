@@ -9,12 +9,10 @@ public class PhCollection {
         Camera cam = new Camera();
         cam.SetPhotoObject();
         photoCollection.add(cam);
-}
+    }
     public void PrintCollection(){
         for (Phototechnique count : photoCollection){
             count.PrintPhotoObject();
         }
+    }
 }
-}
-
-
