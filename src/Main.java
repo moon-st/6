@@ -3,10 +3,16 @@ public class Main {
     public static void main(String[] args) {
         final  PhCollection phCollection = new PhCollection();
         Menu menu = new Menu();
-        menu.addEntry(new MenuEntry("Добавить элемент") {
+        menu.addEntry(new MenuEntry("Добавить фотоаппарат в коллекцию") {
             @Override
             public void run() {
-            phCollection.addToCollection();
+            phCollection.addCamToCollection();
+            }
+        });
+        menu.addEntry(new MenuEntry("Добавить объектив в коллекцию") {
+            @Override
+            public void run() {
+            phCollection.addLensToCollection();
             }
         });
 //        menu.addEntry(new MenuEntry("Обновить эл-т по индексу") {
