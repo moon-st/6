@@ -1,25 +1,57 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
+
 public class Menu {
-    ArrayList<Phototechnique> photoCollection = new ArrayList<>(100);
-    public void addToCollection(){
-        Camera cam1 = new Camera();
-        cam1.SetPhotoObject();
-        photoCollection.add(cam1);
+    private static final String MENU_PATTERN = "%s - %s\n";
+    private List<MenuEntry> entries = new ArrayList<>();
+    private boolean exit = false;
+    public Menu(){
+        entries.add(new MenuEntry("Выход") {
+            @Override
+            public void run() {
+                exit = true;
+
+            }
+        });
     }
-    public void PrintCollection(){
-        for (Phototechnique count : photoCollection){
-            count.PrintPhotoObject();
+    public void run(){
+        while (!exit){
+            printMenu();
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            try{
+                int choice = Integer.parseInt(in.readLine());
+                MenuEntry entry = entries.get(choice-1);
+                entry.run();
+
+            } catch (IOException |IndexOutOfBoundsException  e) {
+                System.out.println("Введите корректный номер пункта меню");
+                //e.printStackTrace();
+            }
         }
     }
-
-    public static void printMenu(){
-        System.out.println("Меню:");
-        System.out.println("1. Добавить элемент в коллекцию.");
-        System.out.println("2. Обновить данные элемента по индексу");
-        System.out.println("3. Удалить элемент по индексу");
-        System.out.println("4. Вывести все объекты на экран");
-     //   System.out.println("5. Отсортировать по цене");
-     //   System.out.println("6. Посчитать среднюю стоимость");
+    public Menu addEntry(MenuEntry entry){
+        int id = entries.size()-1;
+        entries.add(id, entry);
+        return this;
+    }
+    private void printMenu(){
+        StringBuffer buf = new StringBuffer();
+        buf.append("\nMenu:\n");
+        for (int i = 0; i < entries.size(); i++) {
+            MenuEntry entry = entries.get(i);
+            String entryFormatted = String.format(MENU_PATTERN, (i + 1), entry.getTitle());
+            buf.append(entryFormatted);
+        }
+        System.out.print(buf.toString());
+    }
 
     }
-}
+
+
+
+
+
+
