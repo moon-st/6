@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Created by Admin on 24.07.2016.
  */
-public class Camera extends Phototechnique implements iCamera, iPhototechnique{
+public class Camera extends Phototechnique {
     private KindOfCam type;
     private int zoom;
     public Camera(){

@@ -26,7 +26,7 @@ public class Menu {
                 MenuEntry entry = entries.get(choice-1);
                 entry.run();
 
-            } catch (IOException |IndexOutOfBoundsException  e) {
+            } catch (IOException |IndexOutOfBoundsException|NumberFormatException  e) {
                 System.out.println("Введите корректный номер пункта меню");
                 //e.printStackTrace();
             }
@@ -36,6 +36,19 @@ public class Menu {
         int id = entries.size()-1;
         entries.add(id, entry);
         return this;
+
+    }
+    public int choiceId(){
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите индекс элемента");
+        int choiceId=-1;
+        while (choiceId<0){
+        try{
+            choiceId = Integer.parseInt(in.readLine());
+        }catch (IOException|NumberFormatException e) {
+            System.out.println("Введите корректный индекс");
+    }
+    }return choiceId;
     }
     private void printMenu(){
         StringBuffer buf = new StringBuffer();

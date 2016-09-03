@@ -11,6 +11,20 @@ public class PhCollection {
         lens.SetPhotoObject();
         photoCollection.add(lens);
     }
+    public void setItem(int id){
+        if (photoCollection.get(id)instanceof Camera){
+            Camera cam = new Camera();
+            cam.SetPhotoObject();
+        photoCollection.set(id, cam);
+    }else {
+        Lens lens = new Lens();
+            lens.SetPhotoObject();
+            photoCollection.set(id, lens);
+          }
+    }
+    public void removeItem(int id){
+        photoCollection.remove(id);
+    }
     public void PrintCollection(){
         for (Phototechnique obj : photoCollection){
             obj.PrintPhotoObject();

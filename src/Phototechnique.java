@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Created by Admin on 24.07.2016.
  */
-public class Phototechnique implements iPhototechnique{
+public class Phototechnique {
     private String manufacturer;
     private double price;
 
