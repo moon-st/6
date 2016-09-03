@@ -40,8 +40,8 @@ public class Menu {
     }
     public int choiceId(){
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Введите индекс элемента");
         int choiceId=-1;
+        System.out.println("Введите индекс элемента");
         while (choiceId<0){
         try{
             choiceId = Integer.parseInt(in.readLine());

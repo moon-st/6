@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class PhCollection {
     ArrayList<Phototechnique> photoCollection = new ArrayList<>(100);
     public void addCamToCollection(){
@@ -24,6 +27,9 @@ public class PhCollection {
     }
     public void removeItem(int id){
         photoCollection.remove(id);
+    }
+    public void sortByPrice(){
+        Collections.sort(photoCollection, new SortByPrice());
     }
     public void PrintCollection(){
         for (Phototechnique obj : photoCollection){

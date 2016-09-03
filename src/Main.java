@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -34,12 +36,12 @@ public class Main {
                 phCollection.removeItem(id);
             }
         });
-//            menu.addEntry(new MenuEntry("Отсортировать по цене") {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
+            menu.addEntry(new MenuEntry("Отсортировать по цене") {
+            @Override
+            public void run() {
+                phCollection.sortByPrice();
+            }
+        });
 //            menu.addEntry(new MenuEntry("Вычислить среднюю стоимость") {
 //            @Override
 //            public void run() {

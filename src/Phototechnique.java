@@ -38,7 +38,7 @@ public class Phototechnique {
         System.out.println("Введите производителя:");
         manufacturer = in.nextLine();
         System.out.println("Введите цену");
-        price = in.nextDouble();
+        price = in.nextInt();
     }
 
 
