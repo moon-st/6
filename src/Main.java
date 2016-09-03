@@ -1,5 +1,3 @@
-import java.util.Collections;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -42,12 +40,13 @@ public class Main {
                 phCollection.sortByPrice();
             }
         });
-//            menu.addEntry(new MenuEntry("Вычислить среднюю стоимость") {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
+            menu.addEntry(new MenuEntry("Вычислить среднюю стоимость") {
+            @Override
+            public void run() {
+                System.out.println("Средняя цена:"+phCollection.averagePrice());
+
+            }
+        });
 //            menu.addEntry(new MenuEntry("Загрузить из файла") {
 //            @Override
 //            public void run() {

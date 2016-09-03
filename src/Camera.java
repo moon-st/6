@@ -1,3 +1,5 @@
+import org.omg.CORBA.UNKNOWN;
+
 import java.util.Scanner;
 
 /**
@@ -41,10 +43,27 @@ public class Camera extends Phototechnique {
         super.SetPhotoObject();
         System.out.println("Введите величину цифрового зума");
         Scanner in = new Scanner(System.in);
-        zoom = in.nextInt();
+        while (zoom<=0){
+            if (zoom<0) System.out.println("Повторите воод зума");
+            try {
+                zoom = Integer.parseInt(in.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("Введите зум корректно");
+        }}
         System.out.println("Установите тип камеры: 1 - цифровая, 2 - оптическая, 3 - пленочная");
-        int id = in.nextInt();
-        type = KindOfCam.values()[id];
+        while (type==KindOfCam.UNKNOWN){
+            try{
+                int id = Integer.parseInt(in.nextLine());
+                if (id<0&&id>4){
+                    System.out.println("Повторите ввод типа камеры");
+                    id =0;
+                }
+                type = KindOfCam.values()[id];
+            }catch (IndexOutOfBoundsException|NumberFormatException e){
+                System.out.println("Установите тип камеры корректно (1 - цифровая, 2 - оптическая, 3 - пленочная)");
+            }
+        }
+
     }
 
     @Override
@@ -52,5 +71,6 @@ public class Camera extends Phototechnique {
         super.PrintPhotoObject();
         System.out.println("Цифровой зум: "+zoom);
         System.out.println("Тип камеры: "+type);
+        System.out.println("");
     }
 }

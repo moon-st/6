@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -38,8 +39,15 @@ public class Phototechnique {
         System.out.println("Введите производителя:");
         manufacturer = in.nextLine();
         System.out.println("Введите цену");
-        price = in.nextInt();
-    }
+        while (price<=0){
+            if (price<0) System.out.println("Введите цену корректно");
+            try {
+                price = Integer.parseInt(in.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("Введите цену корректно");
+            }
+
+    }}
 
 
 

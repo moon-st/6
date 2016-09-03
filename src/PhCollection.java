@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+
 
 public class PhCollection {
     ArrayList<Phototechnique> photoCollection = new ArrayList<>(100);
@@ -30,6 +30,12 @@ public class PhCollection {
     }
     public void sortByPrice(){
         Collections.sort(photoCollection, new SortByPrice());
+    }
+    public double averagePrice(){
+        double sum=0;
+        for (Phototechnique obj: photoCollection) {
+            sum+=obj.GetPrice();
+        }return sum/photoCollection.size();
     }
     public void PrintCollection(){
         for (Phototechnique obj : photoCollection){

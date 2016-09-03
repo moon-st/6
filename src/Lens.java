@@ -29,12 +29,21 @@ public class Lens extends Phototechnique {
         super.SetPhotoObject();
         System.out.println("Введите минимальное фокусное расстояние");
         Scanner in = new Scanner(System.in);
-        minimumFocalLength = in.nextInt();
+        while (minimumFocalLength<=0){
+            if (minimumFocalLength<0) System.out.println("Повторите воод зума");
+            try {
+                minimumFocalLength = Integer.parseInt(in.nextLine());
+
+            }catch (NumberFormatException e){
+                System.out.println("Введите зум корректно");
+            }}
+        ;
     }
 
     @Override
     public void PrintPhotoObject() {
         super.PrintPhotoObject();
         System.out.println("Мин. фокусное расстояние: "+minimumFocalLength);
+        System.out.println("");
     }
 }

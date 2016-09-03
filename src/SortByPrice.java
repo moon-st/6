@@ -9,15 +9,7 @@ public class SortByPrice implements Comparator<Phototechnique> {
     public int compare(Phototechnique o1, Phototechnique o2) {
         double pr1 = o1.GetPrice();
         double pr2 = o2.GetPrice();
+        return Double.compare(pr1, pr2);
 
-        if(pr1 > pr2) {
-            return 1;
-        }
-        else if(pr1 < pr2) {
-            return -1;
-        }
-        else {
-            return 0;
-        }
     }
 }
