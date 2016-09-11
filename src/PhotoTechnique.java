@@ -1,7 +1,5 @@
-/**
- * Created by Admin on 08.09.2016.
- */
-public abstract class PhotoTechnique {
+import java.io.Serializable;
+public abstract class PhotoTechnique implements Serializable {
     private String brand;
     private int price;
 

@@ -1,13 +1,8 @@
-/**
- * Created by Admin on 08.09.2016.
- */
 public class SurveillanceCamera extends PhotoTechnique {
    private SurveillanceCameraType type;
 
     public SurveillanceCamera() {
-        super();
-        type = type.UNDEFINED;
-    }
+}
 
     public SurveillanceCamera(String brand, int price, SurveillanceCameraType type) {
         super(brand, price);
@@ -18,7 +13,15 @@ public class SurveillanceCamera extends PhotoTechnique {
         return type;
     }
 
-    public void setType(SurveillanceCameraType type) {
+    public void setSurveillanceCameraType(SurveillanceCameraType type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "SurveillanceCamera{" +
+                "type=" + type +
+                " "+super.toString()+
+                '}';
     }
 }
