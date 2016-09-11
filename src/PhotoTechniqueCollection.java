@@ -9,6 +9,10 @@ public class PhotoTechniqueCollection {
         photoTechniques = new PhotoTechnique[size];
         service = new PhotoTechniqueService();
     }
+    public void add() {
+        PhotoTechnique photoTechnique = service.createNewPhotoTechnique();
+        add(photoTechnique);
+    }
     public void add(PhotoTechnique photoTechnique) {
         if (count == photoTechniques.length) {
             int newSize = (int) (photoTechniques.length * 1.5);
@@ -19,12 +23,12 @@ public class PhotoTechniqueCollection {
     }
 
     public void update(int index) {
-        PhotoTechnique animal = photoTechniques[index];
-        if (animal == null) {
+        PhotoTechnique photoTechnique = photoTechniques[index];
+        if (photoTechnique == null) {
             throw new
-                    IllegalArgumentException("there is no such animal!");
+                    IllegalArgumentException("there is no such cameras!");
         }
-        service.update(animal);
+        service.update(photoTechnique);
 
     }
 

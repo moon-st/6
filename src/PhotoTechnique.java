@@ -30,9 +30,7 @@ public abstract class PhotoTechnique implements Serializable {
 
     @Override
     public String toString() {
-        return "PhotoTechnique{" +
-                "brand='" + brand + '\'' +
-                ", price=" + price +
-                '}';
+        return  "brand='" + brand + '\'' +
+                ", price=" + price;
     }
 }

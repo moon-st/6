@@ -1,9 +1,10 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class PhotoTechniqueService {
 
         public PhotoTechnique createNewPhotoTechnique() {
             Scanner s = new Scanner(System.in);
-            System.out.println("cat or dog?");
+            System.out.println("DigitalCamera or SurveillanceCamera?");
 
             String type = s.nextLine();
 
@@ -11,29 +12,32 @@ public class PhotoTechniqueService {
 
             switch (type) {
                 case "DigitalCamera":
-                result = DigitalCamera(s);
+                case "digital":
+                result = readDigitalCamera(s);
                     break;
 
                 case "SurveillanceCamera":
+                case "surveillance":
                 result = readSurveillanceCamera(s);
                     break;
                 default:
-                    throw new IllegalArgumentException("undefined photoTechnique type");
+                    throw new IllegalArgumentException("undefined type");
             }
 
             return result;
         }
 
-        private DigitalCamera DigitalCamera(Scanner s) {
-            DigitalCamera cat  = new DigitalCamera();
-            System.out.println("Input cat name");
-            cat.setBrand(s.nextLine());
+        private DigitalCamera readDigitalCamera(Scanner s) {
+            DigitalCamera  digitalCamera = new DigitalCamera();
+            System.out.println("Input brand");
+            digitalCamera.setBrand(s.nextLine());
 
-            System.out.println("Input cat type");
+            System.out.println("Input price");
+            digitalCamera.setPrice(Integer.parseInt(s.nextLine()));
             DigitalCameraType digitalCameraType = readDigitalCameraType();
-            cat.setDigitalCameraType(digitalCameraType);
+            digitalCamera.setDigitalCameraType(digitalCameraType);
 
-            return cat;
+            return digitalCamera;
         }
 
         private SurveillanceCamera readSurveillanceCamera(Scanner s) {
@@ -52,7 +56,7 @@ public class PhotoTechniqueService {
 
             if (photoTechnique instanceof DigitalCamera) {
                 DigitalCamera digitalCamera = (DigitalCamera) photoTechnique;
-                System.out.println("input new cat type");
+                System.out.println("input new camera type");
                 DigitalCameraType kind = readDigitalCameraType();
 
                 digitalCamera.setDigitalCameraType(kind);
@@ -68,23 +72,24 @@ public class PhotoTechniqueService {
 
         private DigitalCameraType readDigitalCameraType() {
             Scanner s = new Scanner(System.in);
-            DigitalCameraType[] kinds = DigitalCameraType.values();
+           DigitalCameraType[] kinds = DigitalCameraType.values();
 
-            System.out.println("Input cat type, available types:");
-            for (int i = 0; i < kinds.length; i++) {
-                System.out.println(kinds[i].name());
-            }
+            System.out.println("Input type, available types:");
+            System.out.println(Arrays.toString(DigitalCameraType.values()));
+//            for (int i = 0; i < kinds.length; i++) {
+//                System.out.println(kinds[i].name());
+//            }
 
-            String catEnumTypeName = s.nextLine();
+            String DigitalCameraEnumTypeName = s.nextLine();
             DigitalCameraType result = null;
             for (int i = 0; i < kinds.length; i++) {
-                if (kinds[i].name().equalsIgnoreCase(catEnumTypeName)) {
+                if (kinds[i].name().equalsIgnoreCase(DigitalCameraEnumTypeName)) {
                     result = kinds[i];
                     break;
                 }
             }
             if (result == null) {
-                throw new IllegalArgumentException("undefined cat type");
+                throw new IllegalArgumentException("undefined type");
             }
 
             return result;

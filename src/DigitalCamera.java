@@ -19,9 +19,7 @@ public class DigitalCamera extends PhotoTechnique{
 
     @Override
     public String toString() {
-        return "DigitalCamera{" +
-                "type=" + type +
-                " "+super.toString()+
-                '}';
+        return super.toString()+", "+
+                "type=" + type;
     }
 }
