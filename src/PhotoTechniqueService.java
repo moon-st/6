@@ -1,8 +1,8 @@
 import java.util.Arrays;
 import java.util.Scanner;
-public class PhotoTechniqueService {
+public class PhotoTechniqueService implements GenericService<PhotoTechnique> {
 
-        public PhotoTechnique createNewPhotoTechnique() {
+        public PhotoTechnique createNew() {
             Scanner s = new Scanner(System.in);
             System.out.println("DigitalCamera or SurveillanceCamera?");
 
@@ -12,12 +12,12 @@ public class PhotoTechniqueService {
 
             switch (type) {
                 case "DigitalCamera":
-                case "digital":
+                case "d":
                 result = readDigitalCamera(s);
                     break;
 
                 case "SurveillanceCamera":
-                case "surveillance":
+                case "s":
                 result = readSurveillanceCamera(s);
                     break;
                 default:
@@ -31,7 +31,6 @@ public class PhotoTechniqueService {
             DigitalCamera  digitalCamera = new DigitalCamera();
             System.out.println("Input brand");
             digitalCamera.setBrand(s.nextLine());
-
             System.out.println("Input price");
             digitalCamera.setPrice(Integer.parseInt(s.nextLine()));
             DigitalCameraType digitalCameraType = readDigitalCameraType();
@@ -44,31 +43,6 @@ public class PhotoTechniqueService {
             return new SurveillanceCamera("Nikon", 300, SurveillanceCameraType.BABY_MONITOR);
         }
 
-        public void update(PhotoTechnique photoTechnique) {
-            Scanner s = new Scanner(System.in);
-            System.out.println("input new brand");
-            String name = s.nextLine();
-
-            photoTechnique.setBrand(name);
-            System.out.println("input new price");
-            int price = Integer.parseInt(s.nextLine());
-            photoTechnique.setPrice(price);
-
-            if (photoTechnique instanceof DigitalCamera) {
-                DigitalCamera digitalCamera = (DigitalCamera) photoTechnique;
-                System.out.println("input new camera type");
-                DigitalCameraType kind = readDigitalCameraType();
-
-                digitalCamera.setDigitalCameraType(kind);
-            } else if (photoTechnique instanceof SurveillanceCamera) {
-                SurveillanceCamera surveillanceCamera = (SurveillanceCamera)photoTechnique ;
-                //
-            } else {
-                throw new IllegalArgumentException();
-            }
-
-
-        }
 
         private DigitalCameraType readDigitalCameraType() {
             Scanner s = new Scanner(System.in);

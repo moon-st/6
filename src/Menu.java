@@ -34,8 +34,8 @@ public class Menu {
         }
     }
     public  void startApplication(Menu menu){
-        final PhotoTechniqueCollection collection = new PhotoTechniqueCollection(10);
-
+        PhotoTechniqueService service = new PhotoTechniqueService();
+        final GeneralCollection<PhotoTechnique> collection = new GeneralCollection<>(10, service);
         menu.addEntry(new MenuEntry("Add element") {
             @Override
             public void run() {
@@ -61,13 +61,13 @@ public class Menu {
 //        menu.addEntry(new MenuEntry("Sort by price") {
 //            @Override
 //            public void run() {
-//                phCollection.sortByPrice();
+//                collection.sortByPrice();
 //            }
 //        });
 //        menu.addEntry(new MenuEntry("Average price") {
 //            @Override
 //            public void run() {
-//                System.out.println("Средняя цена:"+phCollection.averagePrice());
+//                System.out.println("Средняя цена:"+collection.averagePrice());
 //
 //            }
 //        });

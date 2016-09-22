@@ -19,9 +19,8 @@ public class SurveillanceCamera extends PhotoTechnique {
 
     @Override
     public String toString() {
-        return "SurveillanceCamera{" +
-                "type=" + type +
-                " "+super.toString()+
+        return "SurveillanceCamera{"+ super.toString()+
+                "type=" + type+
                 '}';
     }
 }
