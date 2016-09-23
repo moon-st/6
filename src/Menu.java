@@ -1,8 +1,8 @@
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -34,7 +34,7 @@ public class Menu {
         }
     }
     public  void startApplication(Menu menu){
-        PhotoTechniqueService service = new PhotoTechniqueService();
+        final PhotoTechniqueService service = new PhotoTechniqueService();
         final GeneralCollection<PhotoTechnique> collection = new GeneralCollection<>(10, service);
         menu.addEntry(new MenuEntry("Add element") {
             @Override
@@ -45,7 +45,7 @@ public class Menu {
         menu.addEntry(new MenuEntry("Update element") {
             @Override
             public void run() {
-                int id = getInt();
+                int id = getId();
                 collection.update(id);
                 }
 
@@ -54,23 +54,23 @@ public class Menu {
         menu.addEntry(new MenuEntry("Delete element") {
             @Override
             public void run() {
-                int id = getInt();
+                int id = getId();
                 collection.delete(id);
             }
         });
-//        menu.addEntry(new MenuEntry("Sort by price") {
-//            @Override
-//            public void run() {
-//                collection.sortByPrice();
-//            }
-//        });
-//        menu.addEntry(new MenuEntry("Average price") {
-//            @Override
-//            public void run() {
-//                System.out.println("Средняя цена:"+collection.averagePrice());
-//
-//            }
-//        });
+        menu.addEntry(new MenuEntry("Sort by price") {
+            @Override
+            public void run() {
+                collection.sortByPrice(collection.getList(), new SortByPrice());
+            }
+        });
+        menu.addEntry(new MenuEntry("Average price") {
+            @Override
+            public void run() {
+                System.out.println("Средняя цена:"+service.averagePrice(collection.getList()));
+
+            }
+        });
 //            menu.addEntry(new MenuEntry("Загрузить из файла") {
 //            @Override
 //            public void run() {
@@ -99,8 +99,9 @@ public class Menu {
         return this;
 
     }
-    private int getInt() {
+    private int getId() {
         Scanner s = new Scanner(System.in);
+        System.out.println("Input index");
         int result = Integer.parseInt(s.nextLine());
         return result;
     }

@@ -13,7 +13,7 @@ public class SurveillanceCamera extends PhotoTechnique {
         return type;
     }
 
-    public void setSurveillanceCameraType(SurveillanceCameraType type) {
+    public void setCameraType(SurveillanceCameraType type) {
         this.type = type;
     }
 

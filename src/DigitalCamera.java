@@ -13,7 +13,7 @@ public class DigitalCamera extends PhotoTechnique{
         return type;
     }
 
-    public void setDigitalCameraType(DigitalCameraType type) {
+    public void setCameraType(DigitalCameraType type) {
         this.type = type;
     }
 

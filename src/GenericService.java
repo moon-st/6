@@ -3,4 +3,5 @@
  */
 public interface GenericService<E> {
     E createNew();
+    void update(E e);
 }
