@@ -70,7 +70,7 @@ public class Menu {
 
             }
         });
-            menu.addEntry(new MenuEntry("Open file") {
+            menu.addEntry(new MenuEntry("Read from file") {
             @Override
             public void run() {
                 try {
