@@ -1,4 +1,6 @@
-public class DigitalCamera extends PhotoTechnique{
+import java.io.Serializable;
+
+public class DigitalCamera extends PhotoTechnique {
     private DigitalCameraType type;
 
     public DigitalCamera() {

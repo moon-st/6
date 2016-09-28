@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -125,6 +126,21 @@ public class PhotoTechniqueService implements GenericService<PhotoTechnique> {
             sum+=obj.getPrice();
         }return sum/list.size();
 
+    }
+    public static void write(List<PhotoTechnique> obj, File file) throws IOException{
+        FileOutputStream fos = new FileOutputStream(file);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(obj);
+        oos.flush();
+        oos.close();
+
+    }
+    public static List<PhotoTechnique> read(File file)  throws IOException, ClassNotFoundException {
+        FileInputStream fis = new FileInputStream(file);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        List<PhotoTechnique> list;
+        list = ( List<PhotoTechnique>)ois.readObject();
+        return list;
     }
 
 

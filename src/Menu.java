@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,6 +32,7 @@ public class Menu {
         }
     }
     public  void startApplication(Menu menu){
+        File file = new File("out.bin");
         final PhotoTechniqueService service = new PhotoTechniqueService();
         final GeneralCollection<PhotoTechnique> collection = new GeneralCollection<>(10, service);
         menu.addEntry(new MenuEntry("Add element") {
@@ -71,18 +70,34 @@ public class Menu {
 
             }
         });
-//            menu.addEntry(new MenuEntry("Загрузить из файла") {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
-//            menu.addEntry(new MenuEntry("Выгрузить в файл") {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
+            menu.addEntry(new MenuEntry("Open file") {
+            @Override
+            public void run() {
+                try {
+                   collection.setList(service.read(file));
+                    System.out.println("read successful");
+                }catch (IOException|ClassNotFoundException e){
+                    System.out.println("smth wrong");
+                }
+
+            }
+        });
+            menu.addEntry(new MenuEntry("Save into file") {
+            @Override
+            public void run() {
+                try {
+                   service.write(collection.getList(), file);
+                    System.out.println("file saved");
+                    }catch (IOException e){
+                    System.out.println("no such file here");
+                }
+
+
+
+
+
+            }
+        });
         menu.addEntry(new MenuEntry("Print all") {
             @Override
             public void run() {

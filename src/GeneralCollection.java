@@ -5,6 +5,11 @@ import java.util.List;
 
 public class GeneralCollection<T> {
     private GenericService<T> service;
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
     private List<T> list;
 
     public GeneralCollection (int size, GenericService<T> service){

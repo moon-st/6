@@ -1,4 +1,6 @@
-public class SurveillanceCamera extends PhotoTechnique {
+import java.io.Serializable;
+
+public class SurveillanceCamera extends PhotoTechnique  {
    private SurveillanceCameraType type;
 
     public SurveillanceCamera() {
